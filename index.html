@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff4e8c, #ff85a2);
+    font-family: 'Arial', sans-serif;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.18);
+    padding: 45px;
+    border-radius: 25px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    z-index: 2;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+
+  button {
+    border: none;
+    padding: 12px 26px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+  }
+
+  #yesBtn {
+    background: white;
+    color: #ff2f6d;
+  }
+
+  #noBtn {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+    position: absolute;
+  }
+
+  /* Floating hearts */
+  .heart {
+    position: absolute;
+    bottom: -20px;
+    color: rgba(255,255,255,0.7);
+    animation: floatUp 6s linear infinite;
+  }
+
+  @keyframes floatUp {
+    from {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-110vh) scale(1.5);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>💌 Will you be my Valentine, Raghav? 💌</h1>
+  <p>Life feels sweeter with you in it 💕</p>
+  <button id="yesBtn" onclick="yesClicked()">Yes 💖</button>
+  <button id="noBtn">No 🙈</button>
+</div>
+
+<script>
+  function yesClicked() {
+    alert("YAYYYY 💖🥰\nYou just made my heart the happiest!\nHappy Valentine’s Day ❤️");
+  }
+
+  const noBtn = document.getElementById("noBtn");
+  noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  });
+
+  function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
+
+</body>
+  </html>
